@@ -12,8 +12,8 @@ fn main() {
             .compile("libminifb_native.a");
         println!("cargo:rustc-link-lib=framework=Metal");
         println!("cargo:rustc-link-lib=framework=MetalKit");
-    } else if !env.contains("windows") {
-        // build scalar on non-windows and non-mac
+    } else if !env.contains("windows") && !env.contains("wasm") {
+        // build scalar on non-windows and non-mac and non-wasm
         cc::Build::new()
             .file("src/native/unix/scalar.cpp")
             .opt_level(3) // always build with opts for scaler so it's fast in debug also

@@ -121,6 +121,8 @@ use self::os::redox as imp;
     target_os = "openbsd"
 ))]
 use self::os::unix as imp;
+#[cfg(target_arch = "wasm32")]
+use self::os::wasm as imp;
 #[cfg(target_os = "windows")]
 use self::os::windows as imp;
 ///

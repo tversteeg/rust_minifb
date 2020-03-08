@@ -19,9 +19,6 @@ exclude = [
 [badges]
 maintenance = {status = "actively-developed"}
 
-[lib]
-crate-type = ["cdylib", "rlib"]
-
 [dev-dependencies]
 png = "0.16"
 
@@ -90,11 +87,51 @@ orbclient = "0.3.20"
 [target.wasm32-unknown-unknown.dependencies]
 wasm-bindgen = "0.2.59"
 
+[target.wasm32-unknown-unknown.dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'CanvasRenderingContext2d',
+  'Document',
+  'Element',
+  'HtmlCanvasElement',
+  'Window',
+]
+
 [target.wasm32-unknown-emscripten.dependencies]
 wasm-bindgen = "0.2.59"
+
+[target.wasm32-unknown-emscripten.dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'CanvasRenderingContext2d',
+  'Document',
+  'Element',
+  'HtmlCanvasElement',
+  'Window',
+]
 
 [target.wasm32-experimental-emscripten.dependencies]
 wasm-bindgen = "0.2.59"
 
+[target.wasm32-experimental-emscripten.dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'CanvasRenderingContext2d',
+  'Document',
+  'Element',
+  'HtmlCanvasElement',
+  'Window',
+]
+
 [target.wasm32-wasi.dependencies]
 wasm-bindgen = "0.2.59"
+
+[target.wasm32-wasi.dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'CanvasRenderingContext2d',
+  'Document',
+  'Element',
+  'HtmlCanvasElement',
+  'Window',
+]
