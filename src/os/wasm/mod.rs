@@ -17,6 +17,7 @@ use crate::{Scale, WindowOptions};
 use std::cmp;
 use std::os::raw;
 
+#[wasm_bindgen]
 pub struct Window {
     is_open: bool,
     is_active: bool,
