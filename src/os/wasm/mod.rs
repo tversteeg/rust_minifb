@@ -18,6 +18,7 @@ use std::cmp;
 use std::os::raw;
 
 #[wasm_bindgen]
+#[derive(Debug)]
 pub struct Window {
     is_open: bool,
     is_active: bool,
@@ -272,6 +273,7 @@ unsafe impl raw_window_handle::HasRawWindowHandle for Window {
     }
 }
 
+#[derive(Debug)]
 pub struct Menu {
     pub internal: UnixMenu,
 }
