@@ -1,18 +1,16 @@
-extern crate minifb;
-
 mod utils;
 
 use minifb::{Key, ScaleMode, Window, WindowOptions};
+use std::panic;
 use wasm_bindgen::prelude::*;
 
 const WIDTH: usize = 640;
 const HEIGHT: usize = 360;
 
 #[wasm_bindgen]
-pub fn main() {
-    let mut noise;
-    let mut carry;
-    let mut seed = 0xbeefu32;
+pub fn setup_window() {
+    // Set the panic hook so we can have proper error messages in the console log
+    panic::set_hook(Box::new(console_error_panic_hook::hook));
 
     let mut window = Window::new(
         "Noise Test - Press ESC to exit",

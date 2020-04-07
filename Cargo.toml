@@ -27,7 +27,7 @@ cc = "1.0"
 
 [dependencies]
 cast = "0.2"
-time = "0.1.34"
+instant = { version = "0.1", features = [ "wasm-bindgen", "now" ] }
 raw-window-handle = "0.3.3"
 
 [target.'cfg(windows)'.dependencies.winapi]
@@ -56,49 +56,10 @@ x11-dl = {version = "2.18.3", optional = true}
 [target.x86_64-unknown-redox.dependencies]
 orbclient = "0.3.20"
 
-[target.wasm32-unknown-unknown.dependencies]
+[target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = "0.2.59"
 
-[target.wasm32-unknown-unknown.dependencies.web-sys]
-version = "0.3.4"
-features = [
-  'CanvasRenderingContext2d',
-  'Document',
-  'Element',
-  'HtmlCanvasElement',
-  'Window',
-]
-
-[target.wasm32-unknown-emscripten.dependencies]
-wasm-bindgen = "0.2.59"
-
-[target.wasm32-unknown-emscripten.dependencies.web-sys]
-version = "0.3.4"
-features = [
-  'CanvasRenderingContext2d',
-  'Document',
-  'Element',
-  'HtmlCanvasElement',
-  'Window',
-]
-
-[target.wasm32-experimental-emscripten.dependencies]
-wasm-bindgen = "0.2.59"
-
-[target.wasm32-experimental-emscripten.dependencies.web-sys]
-version = "0.3.4"
-features = [
-  'CanvasRenderingContext2d',
-  'Document',
-  'Element',
-  'HtmlCanvasElement',
-  'Window',
-]
-
-[target.wasm32-wasi.dependencies]
-wasm-bindgen = "0.2.59"
-
-[target.wasm32-wasi.dependencies.web-sys]
+[target.'cfg(target_arch = "wasm32")'.dependencies.web-sys]
 version = "0.3.4"
 features = [
   'CanvasRenderingContext2d',

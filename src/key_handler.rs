@@ -19,7 +19,7 @@ impl KeyHandler {
             keys: [false; 512],
             keys_prev: [false; 512],
             keys_down_duration: [-1.0; 512],
-            prev_time: time::precise_time_s(),
+            prev_time: instant::now() / 1000.0,
             delta_time: 0.0,
             key_repeat_delay: 0.250,
             key_repeat_rate: 0.050,
@@ -49,7 +49,7 @@ impl KeyHandler {
     }
 
     pub fn update(&mut self) {
-        let current_time = time::precise_time_s();
+        let current_time = instant::now() / 1000.0;
         let delta_time = (current_time - self.prev_time) as f32;
         self.prev_time = current_time;
         self.delta_time = delta_time;

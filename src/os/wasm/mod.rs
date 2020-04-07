@@ -15,10 +15,9 @@ use crate::{MenuHandle, MenuItem, MenuItemHandle, UnixMenu, UnixMenuItem};
 use crate::{Scale, WindowOptions};
 
 use std::cmp;
+use std::fmt;
 use std::os::raw;
 
-#[wasm_bindgen]
-#[derive(Debug)]
 pub struct Window {
     is_open: bool,
     is_active: bool,
@@ -254,9 +253,7 @@ impl Window {
         None
     }
 
-    pub fn set_rate(&mut self, time: Option<std::time::Duration>) {
-        unimplemented!()
-    }
+    pub fn set_rate(&mut self, time: Option<instant::Duration>) {}
 
     pub fn update_rate(&mut self) {
         unimplemented!()
@@ -270,6 +267,12 @@ impl Window {
 unsafe impl raw_window_handle::HasRawWindowHandle for Window {
     fn raw_window_handle(&self) -> raw_window_handle::RawWindowHandle {
         unimplemented!()
+    }
+}
+
+impl fmt::Debug for Window {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("Window").finish()
     }
 }
 

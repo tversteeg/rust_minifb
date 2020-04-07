@@ -398,11 +398,11 @@ impl Window {
     /// # use minifb::*;
     /// # let mut window = Window::new("Test", 640, 400, WindowOptions::default()).unwrap();
     /// // Make sure that at least 4 ms has passed since the last event poll
-    /// window.limit_update_rate(Some(std::time::Duration::from_millis(4)));
+    /// window.limit_update_rate(Some(instant::Duration::from_millis(4)));
     /// ```
     ///
     #[inline]
-    pub fn limit_update_rate(&mut self, time: Option<std::time::Duration>) {
+    pub fn limit_update_rate(&mut self, time: Option<instant::Duration>) {
         self.0.set_rate(time)
     }
 

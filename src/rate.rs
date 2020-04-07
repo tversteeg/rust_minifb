@@ -1,4 +1,4 @@
-use std::time::Duration;
+use instant::Duration;
 
 pub struct UpdateRate {
     target_rate: Option<Duration>,
@@ -22,7 +22,7 @@ impl UpdateRate {
     pub fn update(&mut self) {
         if let Some(rate) = self.target_rate {
             let target_rate = rate.as_secs_f64();
-            let current_time = time::precise_time_s();
+            let current_time = instant::now() / 1000.0;
             let delta = current_time - self.prev_time;
 
             if delta < target_rate {
@@ -33,7 +33,7 @@ impl UpdateRate {
                 }
             }
 
-            self.prev_time = time::precise_time_s();
+            self.prev_time = instant::now() / 1000.0;
         }
     }
 }
