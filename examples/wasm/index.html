@@ -7,7 +7,19 @@
     </head>
     <body>
         <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
-        <script src="./bootstrap.js"></script>
+        <script type="module">
+		import init, { Window } from "./pkg/minifb_wasm.js";
+
+		async function run() {
+			await init();
+
+			document.getElementById("status").innerText = "WebAssembly loaded!";
+
+			const window = Window.new("Example", 600, 400);
+		}
+
+		run();
+	</script>
 	<main>
 	    <h1>minifb webassembly demo</h1>
 	    <div id="coord"></div>

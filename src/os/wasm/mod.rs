@@ -51,14 +51,11 @@ impl Window {
         let canvas_width = width as u32 * canvas_scale as u32;
         let canvas_height = height as u32 * canvas_scale as u32;
 
-        let document = web_sys::window().unwrap().document().unwrap();
+        let window = web_sys::window().unwrap();
+        let document = window.document().unwrap();
         document.set_title(name);
 
-        let canvas = document.create_element("canvas").unwrap();
-
-        let body = document.body().unwrap();
-        body.append_child(&canvas);
-
+        let canvas = document.get_element_by_id("canvas").unwrap();
         let canvas: web_sys::HtmlCanvasElement = canvas
             .dyn_into::<web_sys::HtmlCanvasElement>()
             .map_err(|_| ())
